@@ -22,73 +22,79 @@
 //     bs:
 //   }
 // } 
-  
-// function getData(callback){
-//   const allData = document.getElementById('data');
-//   allData.innerHTML = callback;
-// }
-
-// getData
-// const main = document.getElementById('main');
-// const bigData = document.createElement('a');
-
-// bigData.text = 'Ini banyak banget datanya'
-// bigData.href = 'https://google.com'
-
-// main.appendChild(bigData);
 
 
-fetch('https://jsonplaceholder.typicode.com/users')
-  .then(response => response.json())
-  .then(data => {
-    const names = data.map(user => user.name);
-    const usernames = data.map(user => user.username);
-    const emails = data.map(user => user.email);
-    const addresses = data.map(user => user.address);
-    
-    //object address
-    const addressStreets = data.map(user => user.address.street);
-    const addressSuites = data.map(user => user.address.suite);
-    const addressCities = data.map(user => user.address.city);
-    const addressZipcodes = data.map(user => user.address.zipcode);
-    const addressGeos = data.map(user => user.address.geo);
+// buat var tbody untuk panggil tag tbody
+const tbody = document.querySelector('tbody')
 
-    const phones = data.map(user => user.phone);
-    const websites = data.map(user => user.website);
-    const companies = data.map(user => user.company);
-    
-    //object companies
-    const companyNames = data.map(user => user.company.name);
-    const companyCatchPhrases = data.map(user => user.company.catchPhrase);
-    const companyBses = data.map(user => user.company.bs);
+// buat var untuk menampung fungsi
+// jadikan fungsi asynchronous karena keluaran fetch api merupakan promise
+const loadData = async () => {
+  let usersData = [];
 
+  // try & catch untuk handle async & await
+  try {
+    const url = await fetch('https://jsonplaceholder.typicode.com/users'); //await untuk fetch api
+    usersData = await url.json();  //await untuk const url nya
+    console.log(usersData);
+    loadUserData(usersData);
+  } catch (err) {
+    console.log(err)
 
-    //sepertinya bisa menggunakan spread operator
-    console.log(names);
-    console.log(usernames);
-    console.log(emails);
-    console.log(addresses);
-    
-    console.log(addressStreets);
-    console.log(addressSuites);
-    console.log(addressCities);
-    console.log(addressZipcodes);
-    console.log(addressGeos);
+  }
+}
 
-    console.log(phones);
-    console.log(websites);
-    console.log(companies);
-    
-    console.log(companyNames);
-    console.log(companyCatchPhrases);
-    console.log(companyBses);
-
-
-    
-  
-
-                             
+const loadUserData = (data) => {
+  let no = 1;
+  const output = data.map((el) => {
+    return `
+    <tr>
+          <td>` + (no++) + `</td>
+          <td>${el.name}</td>
+          <td>${el.username}</td>
+          <td>${el.email}</td>
+          <td>${el.address}</td>
+          <td>${el.address.city}</td>
+          <td>${el.phone}</td>
+          <td>${el.website}</td>
+          <td>${el.company}</td>
+    </tr>
+    `
   })
-//   .catch(error => console.error(error));   
+  tbody.innerHTML = output
+}
 
-  // document.getElementById("dataJSON").innerHTML = "Hello World!";
+loadData();
+
+
+
+//cara lain
+
+// function loadData() {
+
+//   fetch('https://jsonplaceholder.typicode.com/users')
+//     .then(response => response.json())
+//     .then(data => {
+//       let output = ''
+//       let no = 1;
+//       data.forEach(el => {
+//         output += `
+//         <tr>
+//           <td>` + (no++) +`</td>
+//           <td>${el.name}</td>
+//           <td>${el.username}</td>
+//           <td>${el.email}</td>
+//           <td>${el.address}</td>
+//           <td>${el.phone}</td>
+//           <td>${el.website}</td>
+//           <td>${el.company}</td>
+//         </tr>
+//         `
+//       });
+//       document.querySelector('tbody').innerHTML = output
+//     });
+
+// }
+// loadData;
+
+
