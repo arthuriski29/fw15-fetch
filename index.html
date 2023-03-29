@@ -5,25 +5,57 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FETCH API-data</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    thead {
+      /* background-color: black;
+      color: white; */
+      font-size: 11px;
+    }
+    tbody {
+      font-size: 11px;
+      border-left: 1px;
+    }
+    tbody > tr > td {
+      padding-left: 2px;
+      padding-right: 15px;
+    }
+
+  </style>
 </head>
 <body>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>No</th>
-        <th>Name</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>City Address</th>
-        <th>Phone</th>
-        <th>Website</th>
-        <th>Company</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- isi di code pada javascript -->
-    </tbody>
+  <div class="w-full">
+    <table class=" border border-slate-500 mx-[10px] mt-[20px]">
+      <thead class="text-center">
+        <tr>
+          <th class="border border-spacing-1 border-slate-600 ..." rowspan="3">No</th>
+          <th class="border border-slate-600 ..." rowspan="3">Name</th>
+          <th class="border border-slate-600 ..." rowspan="3">Username</th>
+          <th class="border border-slate-600 ..." rowspan="3">Email</th>
+          <th class="border border-slate-600 ..." colspan="6">Address</th>
+          <th class="border border-slate-600 ..." rowspan="3">Phone</th>
+          <th class="border border-slate-600 ..." rowspan="3">Website</th>
+          <th class="border border-slate-600 ..." colspan="3">Company</th>
+        </tr>
+        <tr>
+          <th class="border border-slate-600 ..." rowspan="2">Street</th>
+          <th class="border border-slate-600 ..." rowspan="2">Suite</th>
+          <th class="border border-slate-600 ..." rowspan="2">City</th>
+          <th class="border border-slate-600 ..." rowspan="2">Zipcode</th>
+          <th class="border border-slate-600 ..." colspan="2">Geo</th>
+          <th class="border border-slate-600 ..." rowspan="2">Name</th>
+          <th class="border border-slate-600 ..." rowspan="2" >catchPhrase</th>
+          <th class="border border-slate-600 ..." rowspan="2" >bs</th>
+        </tr>
+        <tr>
+          <th class="border border-slate-600 ...">Lat.</th>
+          <th class="border border-slate-600 ...">Lng.</th>
+        </tr>
+      </thead>
+      <tbody class="border border-slate-600 ...">
+        <!-- isi di code pada javascript -->
+      </tbody>
+  </div>
   </table>   
 
 
